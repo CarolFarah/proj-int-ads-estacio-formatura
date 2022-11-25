@@ -1,0 +1,60 @@
+{
+    "name": "lab3",
+    "properties": {
+        "activities": [
+            {
+                "name": "blob_to_stage",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/ana.farah@blueshift.com.br/lab3/Lab3"
+                },
+                "linkedServiceName": {
+                    "referenceName": "lab3_cluster3",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Stage_to_DW",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "blob_to_stage",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": "[STAGE_ANA_FARAH_lab3].[PROC_STAGE_TO_DW]"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureSqlAnaFarahLab3",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "folder": {
+            "name": "Ana Farah"
+        },
+        "annotations": [],
+        "lastPublishTime": "2022-11-17T23:18:11Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
