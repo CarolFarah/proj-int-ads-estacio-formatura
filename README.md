@@ -1,9 +1,10 @@
 # Projeto de Engenharia/Ciência de Dados com integração entre SQL Server e Microsoft Power BI simulando situação real para avaliação semestral da matéria de Proj. Int. Análise de Sistemas da Universidade Estácio de Sá.
 
-Instituição: Universidade Estácio de Sá
-Campus: Recreio/BW
-Professor: Raphael Jesus
-Semestre: 2022.2
+Projeto Acadêmico de Conclusão de Curso
+- Instituição: Universidade Estácio de Sá
+- Campus: Recreio/BW
+- Professor: Raphael Jesus
+- Semestre: 2022.2
 
 Membros do grupo:
 
