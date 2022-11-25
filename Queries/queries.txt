@@ -1,0 +1,151 @@
+CREATE TABLE [STAGE_ANA_FARAH_lab3].[POCCO_ORDERS_TABLE]
+
+(region VARCHAR (40),
+country VARCHAR (40),
+item_type VARCHAR (20),
+sales_channel VARCHAR(7),
+order_priority VARCHAR(1),
+order_date DATE,
+order_id INT PRIMARY KEY,
+ship_date DATE,
+units_sold INT,
+unit_price DECIMAL(10,2),
+unit_cost DECIMAL(10,2),
+total_revenue DECIMAL (10,2),
+total_cost DECIMAL(10,2),
+total_profit DECIMAL(10,2))
+
+
+
+CREATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_REGION_TABLE]
+
+(region_id INT IDENTITY NOT NULL,
+region VARCHAR (40))
+
+
+
+CREATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_COUNTRY_TABLE]
+
+(country_id INT IDENTITY NOT NULL,
+country VARCHAR (40),
+region VARCHAR (40))
+
+
+
+CREATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_CHANNEL_TABLE]
+
+(channel_id INT IDENTITY NOT NULL,
+sales_channel VARCHAR(7))
+
+
+
+CREATE TABLE [DW_ANA_FARAH_lab3].[DW_FACT_SALES_TABLE]
+(
+region_id INT NOT NULL,
+country_id INT NOT NULL,
+channel_id INT NOT NULL,
+order_id INT NOT NULL,
+item_type VARCHAR (20), 
+order_priority VARCHAR(1),
+order_date DATE,
+ship_date DATE,
+units_sold INT,
+unit_price DECIMAL(10,2),
+unit_cost DECIMAL(10,2),
+total_revenue DECIMAL (10,2),
+total_cost DECIMAL(10,2),
+total_profit DECIMAL(10,2)
+)  
+
+
+
+CREATE PROCEDURE [STAGE_ANA_FARAH_lab3].[PROC_STAGE_TO_DW] AS 
+
+	BEGIN
+
+	    TRUNCATE TABLE [DW_ANA_FARAH_lab3].[DW_FACT_SALES_TABLE]
+	    TRUNCATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_CHANNEL_TABLE]
+	    TRUNCATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_COUNTRY_TABLE]
+	    TRUNCATE TABLE [DW_ANA_FARAH_lab3].[DW_DIM_REGION_TABLE]
+
+
+	    INSERT INTO [DW_ANA_FARAH_lab3].[DW_DIM_CHANNEL_TABLE] (sales_channel)
+	    SELECT sales_channel
+	    FROM [STAGE_ANA_FARAH_lab3].[POCCO_ORDERS_TABLE]
+          GROUP BY sales_channel
+	    ORDER BY sales_channel
+	
+          INSERT INTO [DW_ANA_FARAH_lab3].[DW_DIM_COUNTRY_TABLE] (country)
+	    SELECT country
+	    FROM [STAGE_ANA_FARAH_lab3].[POCCO_ORDERS_TABLE]
+	    GROUP BY country
+	    ORDER BY country
+    
+
+	    INSERT INTO [DW_ANA_FARAH_lab3].[DW_DIM_REGION_TABLE] (region)  
+	    SELECT region 
+	    FROM [STAGE_ANA_FARAH_lab3].[POCCO_ORDERS_TABLE]
+	    GROUP BY region
+	    ORDER BY region
+	
+
+	    INSERT INTO [DW_ANA_FARAH_lab3].[DW_FACT_SALES_TABLE]
+          (
+            order_id,
+            item_type,
+            order_priority,
+            order_date,
+            ship_date,
+            unit_price,
+            unit_cost,
+            units_sold,
+            total_revenue,
+            total_cost,
+            total_profit,
+            channel_id,
+            region_id,
+            country_id  
+		)
+
+
+	    SELECT
+            order_id,
+            item_type,
+            order_priority,
+            order_date,
+            ship_date,
+            unit_price,
+            unit_cost,
+            units_sold,
+            total_revenue,
+            total_cost,
+            total_profit,
+            channel_id,
+            region_id,
+            country_id
+
+	    FROM [STAGE_ANA_FARAH_lab3].[POCCO_ORDERS_TABLE] st 
+	    LEFT JOIN [DW_ANA_FARAH_lab3].[DW_DIM_CHANNEL_TABLE] dw_sc ON st.sales_channel = dw_sc.sales_channel
+	    LEFT JOIN [DW_ANA_FARAH_lab3].[DW_DIM_COUNTRY_TABLE] dw_c ON st.country = dw_c.country
+	    LEFT JOIN [DW_ANA_FARAH_lab3].[DW_DIM_REGION_TABLE] dw_r ON st.region = dw_r.region
+	END
+GO
+
+
+	                        
+
+
+DROP TABLE [DW_ANA_FARAH_lab3].[DW_FACT_SALES_TABLE]
+DROP TABLE [DW_ANA_FARAH_lab3].[DW_DIM_REGION_TABLE]
+DROP TABLE [DW_ANA_FARAH_lab3].[DW_DIM_CHANNEL_TABLE]
+DROP TABLE [DW_ANA_FARAH_lab3].[DW_DIM_COUNTRY_TABLE]
+
+
+DROP PROCEDURE [STAGE_ANA_FARAH_lab3].[PROC_STAGE_TO_DW]
+
+
+
+
+
+			
+Total Sales Last 30 Days = VAR MaxDate = CALCULATE( MAX('DW_ANA_FARAH_lab3 DW_FACT_SALES_TABLE'[order_date]); ALL('DW_ANA_FARAH_lab3 DW_DIM_CHANNEL_TABLE')) RETURN CALCULATE([
