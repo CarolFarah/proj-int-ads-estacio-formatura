@@ -1,0 +1,22 @@
+{
+    "now": "2022-11-14T23:10:12.643Z",
+    "perfNow": 64847.80000001192,
+    "diagnosticCorrelation": "eff4228f-c34d-400f-8452-2136a7e6c21d",
+    "source": "DownloadSupportFiles",
+    "environment": {
+        "productName": "adf",
+        "buildVersion": "1.0.111122.6",
+        "environmentType": 3,
+        "resourceName": "df-estudos-II",
+        "resourceRegion": "eastus",
+        "resourceGroup": "Estudos-Azure",
+        "subscriptionId": "f9090f81-02bc-45d2-89d2-9bfe48adf4a3",
+        "sessionId": "qt0z8",
+        "operationId": "1Kivg",
+        "gitType": "live"
+    },
+    "additionalInfo": {
+        "selectedResource": "lab3_databricks_cluster3",
+        "selectedResourceType": "pipeline"
+    }
+}
