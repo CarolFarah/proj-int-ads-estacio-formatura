@@ -1,0 +1,6 @@
+selected resource name:		lab3_databricks_cluster3
+selected resource type:		pipeline
+data factory name:			df-estudos-II
+data factory location:		eastus
+subscription id:		f9090f81-02bc-45d2-89d2-9bfe48adf4a3
+time of download (UTC):		Mon, 14 Nov 2022 23:10:12 GMT
