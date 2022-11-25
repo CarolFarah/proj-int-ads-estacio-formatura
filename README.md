@@ -11,6 +11,12 @@ Membros do grupo:
 - Ana Carolina de Oliveira Farah / matrícula 201803355093
 - Henrique Moura de Mesquita / matrícula 201803355085
 
+Tema e propósito:
+- Construir um processo de migração de cargas de trabalho para Data Lake a partir de um dataset com relatório de vendas da Pocco Pamonhas
+- Realizar etapas de tratamentos necessárias
+- Modelar dados e construir Data Warehousing
+- Exibir visão dos KPI's através de Dashboard interativo
+
 Tecnologias utilizadas:
 
 - Databricks
@@ -22,9 +28,6 @@ Tecnologias utilizadas:
 - Biblioteca pandas
 - Linguagens SQL e Python 3.10
 - ETL com Arquitetura Medalhão (Bronze, Prata e Gold)
-
-Tema e propósito:
-- Processo de Data Integration utilizando pySpark e orquestração de pipelines via Azure Data Factory com output de dados integrados entre o SQL Server e o Power BI na visão dos KPI's através de Dashboard interativo.
 
 ### Foi utilizado star schema (Tabelas Fatos e Dimensões) e Data Warehousing integrado do Power BI.
 
