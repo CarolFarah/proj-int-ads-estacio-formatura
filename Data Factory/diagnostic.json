@@ -10,7 +10,7 @@
         "resourceName": "df-estudos-II",
         "resourceRegion": "eastus",
         "resourceGroup": "Estudos-Azure",
-        "subscriptionId": "f9090f81-02bc-45d2-89d2-9bfe48adf4a3",
+        "subscriptionId": "[SECRET_KEY]",
         "sessionId": "qt0z8",
         "operationId": "1Kivg",
         "gitType": "live"
