@@ -18,8 +18,10 @@ Tecnologias utilizadas:
 - Power BI
 - IaaS / Cloud Azure
 - Infraestrutura pay as you go
-- Frameworks pandas e pySpark
+- Framework pySpark
+- Biblioteca pandas
 - Linguagens SQL e Python 3.10
+- ETL com Arquitetura Medalhão (Bronze, Prata e Gold)
 
 Tema e propósito:
 - Processo de Data Integration utilizando pySpark e orquestração de pipelines via Azure Data Factory com output de dados integrados entre o SQL Server e o Power BI na visão dos KPI's através de Dashboard interativo.
@@ -30,17 +32,27 @@ Tema e propósito:
 
 ![alt text](https://i.imgur.com/7l0W81n.png)
 
-## Criação da Procedure - Parte 1
+## Criação da Procedure - 1a. Parte
 
 ![alt text](https://i.imgur.com/DBESZhJ.png)
 
-## Criação da Procedure - Parte 2
+## Criação da Procedure - 2a. Parte
 
 ![alt text](https://i.imgur.com/LqzgbQv.png)
 
 ## Exibição da tabela Fatos
 
 ![alt text](https://i.imgur.com/Fstlk4G.png)
+
+## Etapas de Data Integration - Amostra de parte do código fonte
+*Para procedimentos detalhados, efetuar o download do código fonte na pasta Databricks
+
+![alt text](https://i.imgur.com/n2qHODK.png)
+
+## Etapas de Data Integration - Amostra de parte do código fonte
+*Para procedimentos detalhados, efetuar o download do código fonte na pasta Databricks
+
+![alt text](https://i.imgur.com/JtRe5Qp.png)
 
 ## Orquestação realizada no Azure Data Factory
 
